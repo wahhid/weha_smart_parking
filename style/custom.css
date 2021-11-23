@@ -1,0 +1,16 @@
+.big_button {{
+    height: 64px;
+    margin-bottom: 15px;
+}}
+
+.message_border {{
+    color: {QTMATERIAL_PRIMARYCOLOR};
+    border-style: solid;
+    border-color: {QTMATERIAL_PRIMARYCOLOR};
+    border-radius: 2px;
+    border-width: 2px;
+    border-radius: 3;
+    padding: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+}}
