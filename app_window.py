@@ -14,7 +14,6 @@ from dotenv import load_dotenv
 
 from qt_material import apply_stylesheet
 
-
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
 class Controller():
@@ -148,11 +147,11 @@ class Controller():
 
 def main():
     app = QtWidgets.QApplication(sys.argv)
-    apply_stylesheet(app, theme='dark_teal.xml')
+    #apply_stylesheet(app, theme='dark_teal.xml')
     app_path = os.path.dirname(os.path.abspath(__file__))
     
     
-    stylesheet = app.styleSheet()
+    #stylesheet = app.styleSheet()
     # app.setStyleSheet(stylesheet + "QPushButton{color: red; text-transform: none;}")
     with open( app_path + '/style/custom.css') as file:
         app.setStyleSheet(stylesheet + file.read().format(**os.environ))
