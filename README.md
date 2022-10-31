@@ -72,6 +72,7 @@ killall matchbox-keyboard
 else
 matchbox-keyboard -s 50 extended&
 fi
+
 3. Execute the commands:
 
 sudo chmod +x /usr/bin/toggle-matchbox-keyboard.sh
@@ -87,6 +88,7 @@ Type=Application
 Icon=matchbox-keyboard.png
 Categories=Panel;Utility;MB
 X-MB-INPUT-MECHANSIM=True
+
 5. Execute commands as below. Note that you need to use "Pi " user permission instead of root to execute this command
 
 nano ~/.config/lxpanel/LXDE-pi/panels/panel

@@ -11,6 +11,7 @@ import queue
 from return_handling import ReturnHandling
 from lib.ui import ParentUi
 from printer.receipt_entry import ReceiptEntry
+
 running = False
 capture_thread = None
 q = queue.Queue()

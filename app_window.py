@@ -1,18 +1,18 @@
 from PyQt5 import QtWidgets, QtCore, uic
-# View
-
-# Controller
-from controller.res_users import ResUsers as ResUserController
-from controller.parking_transaction import ParkingTransaction as ParkingTransactionController
-from controller.parking_transaction_session import ParkingTransactionSession as ParkingTransactionSessionController
-from controller.parking_booth import ParkingBooth as ParkingBoothController
-
 import sys
 import os
 import logging 
+from configparser import ConfigParser
 from dotenv import load_dotenv
+# View
 
-from qt_material import apply_stylesheet
+# Controller
+#from controller.res_users import ResUsers as ResUserController
+#from controller.parking_transaction import ParkingTransaction as ParkingTransactionController
+#from controller.parking_transaction_session import ParkingTransactionSession as ParkingTransactionSessionController
+#from controller.parking_booth import ParkingBooth as ParkingBoothController
+from controller.parking import Parking as ParkingController
+
 
 logging.basicConfig(format='%(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
@@ -20,22 +20,20 @@ class Controller():
 
     is_login = False
     access_token = None
-    ui_type = 'p'
+    ui_type = 'q'
     booth = False
     
     def __init__(self, app_path):
         super(Controller, self).__init__()
         load_dotenv(verbose=True)
-        self.app_path = app_path
+        self.config_object = ConfigParser()
+        self.config_object.read("config.ini")
         self.logger = logging.getLogger(__name__)
-        
+
         #Init Value
 
         #Init Controller
-        self.resUsersController = ResUserController(self)
-        self.parkingTransactionController = ParkingTransactionController(self)
-        self.parkingTransactionSessionController = ParkingTransactionSessionController(self)
-        self.parkingBoothController = ParkingBoothController(self)
+        self.parkingController = ParkingController(self)
 
     def load_ui(self):
         pass
@@ -48,11 +46,14 @@ class Controller():
             self.parkingLoginUi.show()
 
     def load_parking_manless_client(self):
-        if os.getenv('UI_TYPE') == 'p':   
+        if self.ui_type == 'p':   
             from view.p.parking_manless_client import ParkingManlessClientUi
 
             self.parkingManlessClientUi = ParkingManlessClientUi(self)
             self.parkingManlessClientUi.show()
+        
+        if self.ui_type == 'q':
+               
 
     def load_parking_operator_client(self):
         if os.getenv('UI_TYPE') == 'p':   

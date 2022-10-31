@@ -12,8 +12,10 @@ from lib.ui import ParentUi
 import numpy as np
 
 
+
 class VideoThread(QThread):
     change_pixmap_signal = pyqtSignal(np.ndarray)
+
     def run(self):
         # capture from web cam
         cap = cv2.VideoCapture(0)
@@ -24,6 +26,7 @@ class VideoThread(QThread):
 
 
 class ParkingOperatorClientUi(ParentUi):
+
     ui_path = "ui/p0003.ui"
 
     def __init__(self, controller):
